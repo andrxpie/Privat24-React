@@ -1,11 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Layout as AntdLayout, Menu } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useLocation  } from 'react-router-dom';
 import { CreditCardOutlined, HomeOutlined, InfoCircleOutlined, PlusCircleOutlined, ProductOutlined, UnorderedListOutlined } from '@ant-design/icons';
 
 const { Header: AntdHeader } = AntdLayout;
 
+const menuItems = [
+    {
+        key: "/",
+        label: <Link to="/">Home</Link>,
+        icon: <HomeOutlined />
+    },
+    {
+        key: "/cards",
+        label: <Link to="/cards">Cards</Link>,
+        icon: <CreditCardOutlined />
+    },
+    {
+        key: "/new",
+        label: <Link to="/new">New</Link>,
+        icon: <PlusCircleOutlined />
+    },
+    {
+        key: "/about",
+        label: <Link to="/about">About</Link>,
+        icon: <InfoCircleOutlined />
+    }
+]
+
 export default function Header() {
+    let location = useLocation();
+
+    const [current, setCurrent] = useState(location.pathname);
+
+    useEffect(() => {
+        if (location) {
+            if (current !== location.pathname) {
+                setCurrent(location.pathname);
+            }
+        }
+    }, [location, current]);
+
     return (
         <AntdHeader
             style={{
@@ -17,32 +52,13 @@ export default function Header() {
             <Menu
                 theme="dark"
                 mode="horizontal"
-                defaultSelectedKeys={['2']}
+                defaultSelectedKeys={[current]}
+                items={menuItems}
                 style={{
                     flex: 1,
                     minWidth: 0,
                 }}
-            >
-                <Menu.Item key="1">
-                    <HomeOutlined />
-                    <span>Home</span>
-                    <Link to="/" />
-                </Menu.Item>
-                <Menu.Item key="2">
-                    <CreditCardOutlined />
-                    <span>Cards</span>
-                    <Link to="/cards" />
-                </Menu.Item>
-                <Menu.Item key="3">
-                    <PlusCircleOutlined />
-                    <span>New</span>
-                    <Link to="/new" />
-                </Menu.Item>
-                <Menu.Item key="4">
-                    <InfoCircleOutlined />
-                    <span>About</span>
-                    <Link to="/about" />
-                </Menu.Item>
+            >                
             </Menu>
         </AntdHeader>
     )

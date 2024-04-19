@@ -1,32 +1,35 @@
-import { RollbackOutlined } from "@ant-design/icons";
+import { CreditCardOutlined, DollarOutlined, HistoryOutlined, PhoneOutlined, RollbackOutlined, SwapLeftOutlined } from "@ant-design/icons";
+import { Space } from "antd";
+import { Button } from "antd";
 import React from "react";
+import '../App.scss';
 
 export default function Choise() {
   return (
     <>
-      <h1>
-        <button>
-          <RollbackOutlined />
-        </button>
-        <span>Choise</span>
-      </h1>
-      <div class="container">
-        <div class="element" routerLink="/new/card">
-          <mat-icon>credit_card</mat-icon>
+      <h2 className="return-zone">
+        <Button type="dashed">
+          <SwapLeftOutlined />
+        </Button>
+        <span>Back</span>
+      </h2>
+      <div className="container">
+        <Space className="element" routerLink="/new/card">
+          <CreditCardOutlined />
           Карту
-        </div>
-        <div class="element" routerLink="/new/transaction">
-          <mat-icon>paid</mat-icon>
+        </Space>
+        <Space className="element" routerLink="/new/transaction">
+          <DollarOutlined />
           Переказ
-        </div>
-        <div class="element" routerLink="/new/paynum">
-          <mat-icon>smartphone</mat-icon>
+        </Space>
+        <Space className="element" routerLink="/new/paynum">
+          <PhoneOutlined />
           Поповнення рахунку
-        </div>
-        <div class="element" routerLink="/history">
-          <mat-icon>history</mat-icon>
+        </Space>
+        <Space className="element" routerLink="/history">
+         <HistoryOutlined />
           Архів
-        </div>
+        </Space>
       </div>
     </>
   );
