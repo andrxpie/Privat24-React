@@ -1,8 +1,16 @@
-import { CreditCardOutlined, DollarOutlined, HistoryOutlined, PhoneOutlined, RollbackOutlined, SwapLeftOutlined } from "@ant-design/icons";
+import {
+  CreditCardOutlined,
+  DollarOutlined,
+  HistoryOutlined,
+  PhoneOutlined,
+  RollbackOutlined,
+  SwapLeftOutlined,
+} from "@ant-design/icons";
+import { Link } from "react-router-dom";
 import { Space } from "antd";
 import { Button } from "antd";
 import React from "react";
-import '../App.scss';
+import "../App.scss";
 
 export default function Choise() {
   return (
@@ -14,22 +22,30 @@ export default function Choise() {
         <span>Back</span>
       </h2>
       <div className="container">
-        <Space className="element" routerLink="/new/card">
-          <CreditCardOutlined />
-          Карту
-        </Space>
-        <Space className="element" routerLink="/new/transaction">
-          <DollarOutlined />
-          Переказ
-        </Space>
-        <Space className="element" routerLink="/new/paynum">
-          <PhoneOutlined />
-          Поповнення рахунку
-        </Space>
-        <Space className="element" routerLink="/history">
-         <HistoryOutlined />
-          Архів
-        </Space>
+        <Link to="card" className="element">
+          <Space>
+            <CreditCardOutlined />
+            Карту
+          </Space>
+        </Link>
+        <Link to="transaction" className="element">
+          <Space>
+            <DollarOutlined />
+            Переказ
+          </Space>
+        </Link>
+        <Link to="paynum" className="element">
+          <Space>
+            <PhoneOutlined />
+            Поповнення рахунку
+          </Space>
+        </Link>
+        <Link to="../archive" className="element">
+          <Space>
+            <HistoryOutlined />
+            Архів
+          </Space>
+        </Link>
       </div>
     </>
   );
