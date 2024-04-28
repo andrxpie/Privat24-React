@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Layout as AntdLayout, Menu } from 'antd';
 import { Link, useLocation  } from 'react-router-dom';
-import { CreditCardOutlined, HomeOutlined, InfoCircleOutlined, PlusCircleOutlined, ProductOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { CreditCardOutlined, HomeOutlined, InfoCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import '../App.scss'
 
 const { Header: AntdHeader } = AntdLayout;
 
